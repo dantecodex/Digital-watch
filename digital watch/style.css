@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    font-family: 'poppins', sans-serif;
+
+}
+
+body {
+    background-color: #2E2E44;
+
+    margin: 0;
+    padding: 0;
+}
+
+.clock-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.clock-container::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: -8px;
+    width: 430px;
+    height: 225px;
+    background: linear-gradient(45deg, #24ff6d, #2f93f1);
+    border-radius: 20px;
+    opacity: 0.5;
+    filter: blur(35px);
+    z-index: -2;
+}
+
+.main-box {
+    background-color: #2E2E44;
+    padding: 20px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+.clock {
+    display: flex;
+    /* align-items: center; */
+
+}
+
+.main-time {
+    display: flex;
+    font-size: 80px;
+    font-weight: 600;
+    background-clip: border-box;
+}
+
+.extra-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 3px;
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+
+#hours {
+    margin-right: 20px;
+    background: linear-gradient(#5fd4ff, #634dff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#dots {
+    margin-right: 10px;
+    color: #929292;
+    font-size: 70px;
+    align-self: center;
+}
+
+#minute {
+    background: linear-gradient(#ffb960, #ff5e9e);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#meridiem {
+    background: -webkit-linear-gradient(#faf879, #f7b63f);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+#seconds {
+    background: -webkit-linear-gradient(#2f93f1, #24ff6d);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#date {
+    background: -webkit-linear-gradient(#ff98d1, #ae4af6);
+    font-weight: 500;
+    font-size: 18px;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
