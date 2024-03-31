@@ -3,12 +3,12 @@
 
 * {
     font-family: 'poppins', sans-serif;
+    user-select: none;
 
 }
 
 body {
     background-color: #2E2E44;
-
     margin: 0;
     padding: 0;
 }
@@ -18,7 +18,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    z-index: 1;
 }
 
 .clock-container::before {
@@ -32,10 +32,83 @@ body {
     border-radius: 20px;
     opacity: 0.5;
     filter: blur(35px);
-    z-index: -2;
+
 }
 
+#toggle {
+    position: absolute;
+    right: 0px;
+    width: 35px;
+    height: 30px;
+    color: rgba(255, 255, 255, 0.541);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+    line-height: 35px;
+    
+}
+
+#toggle:hover {
+    color: white;
+}
+
+#toggle:active {
+    opacity: 0.6;
+    transition: 0.1s;
+}
+
+#toggle i {
+    font-size: 19px;
+}
+
+#toggle-menu {
+    display: none;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    right: -91px;
+    top: 10px;
+    background-color: #222231;
+    /* overflow: hidden; */
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+#toggle-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(45deg, #24ff6d, #2f93f1);
+    border-radius: 20px;
+    opacity: 0.5;
+    filter: blur(35px);
+    z-index: -1;
+}
+
+#toggle-menu li {
+
+    padding: 12px 24px;
+    list-style-type: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.133);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#toggle-menu li:hover {
+    background-color: #3d3d50;
+
+}
+
+#toggle-menu li:nth-child(2) {
+    border: none;
+}
+
+
 .main-box {
+    position: relative;
     background-color: #2E2E44;
     padding: 20px 60px;
     border-radius: 10px;
