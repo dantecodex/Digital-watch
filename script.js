@@ -3,7 +3,6 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 
 
 function updateClock(twelveHour) {
-    console.log(twelveHour);
     const now = new Date();
     let meridiem = '';
     let hours = now.getHours();
@@ -70,19 +69,33 @@ const toggle = document.getElementById("toggle");
 const toggleMenu = document.getElementById("toggle-menu")
 
 let togglebtn = false;
+// toggle.onclick = () => {
+
+//     if (togglebtn) {
+//         toggleMenu.style.display = "none";
+//         togglebtn = false;
+//         // toggle.style.backgroundColor = "";
+//     }
+//     else {
+//         toggleMenu.style.display = "block";
+//         togglebtn = true;
+//         // toggle.style.backgroundColor = "#222231";
+//     }
+
+// }
+
 toggle.onclick = () => {
 
     if (togglebtn) {
-        toggleMenu.style.display = "none";
+        toggleMenu.style.animation = "reverse-swipe 0.5s linear forwards";
         togglebtn = false;
-        // toggle.style.backgroundColor = "";
+
     }
     else {
-        toggleMenu.style.display = "block";
+        toggleMenu.style.animation = "swipe 0.5s linear forwards";
         togglebtn = true;
-        // toggle.style.backgroundColor = "#222231";
+
     }
 
 }
-
 

@@ -18,21 +18,34 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 2;
 }
 
 .clock-container::before {
     content: "";
     position: absolute;
-    top: -16px;
-    left: -8px;
-    width: 430px;
-    height: 225px;
+
     background: linear-gradient(45deg, #24ff6d, #2f93f1);
     border-radius: 20px;
     opacity: 0.5;
     filter: blur(35px);
+    animation: glow 1.5s ease-out 1s forwards;
+}
 
+@keyframes glow {
+    from {
+        width: 0px;
+        height: 0px;
+        top: 0px;
+        left: 0px;
+    }
+
+    to {
+        width: 430px;
+        height: 225px;
+        top: -16px;
+        left: -8px;
+    }
 }
 
 #toggle {
@@ -45,7 +58,7 @@ body {
     cursor: pointer;
     transition: 0.5s;
     line-height: 35px;
-    
+
 }
 
 #toggle:hover {
@@ -62,16 +75,44 @@ body {
 }
 
 #toggle-menu {
-    display: none;
+    /* display: none; */
     color: white;
     font-weight: 600;
     position: absolute;
-    right: -91px;
-    top: 10px;
+    right: 55px;
+    top: 50px;
     background-color: #222231;
     /* overflow: hidden; */
     border-radius: 0px 10px 10px 0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    /* animation: swipe 0.5s linear;
+    animation-fill-mode: forwards; */
+
+}
+
+@keyframes swipe {
+    0% {
+        right: 0px;
+        top: 10px;
+    }
+
+    100% {
+        right: -91px;
+        top: 10px;
+    }
+}
+
+@keyframes reverse-swipe {
+    0% {
+        right: -91px;
+        top: 10px;
+    }
+
+    100% {
+        right: 55px;
+        top: 10px;
+        display: none;
+    }
 }
 
 #toggle-menu::before {
@@ -85,7 +126,7 @@ body {
     border-radius: 20px;
     opacity: 0.5;
     filter: blur(35px);
-    z-index: -1;
+    z-index: -2;
 }
 
 #toggle-menu li {
