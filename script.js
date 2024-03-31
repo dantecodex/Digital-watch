@@ -1,14 +1,16 @@
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-function updateClock() {
 
+function updateClock(twelveHour) {
     const now = new Date();
-    console.log(now);
+    let meridiem = '';
     let hours = now.getHours();
-    const meridiem = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12;
-    hours = hours.toString().padStart(2, 0);
+    if (twelveHour) {
+        hours = hours % 12 || 12;
+        hours = hours.toString().padStart(2, 0);
+        meridiem = hours >= 12 ? "PM" : "AM";
+    }
     const minute = now.getMinutes().toString().padStart(2, 0);
     const seconds = now.getSeconds().toString().padStart(2, 0);
 
@@ -25,5 +27,75 @@ function updateClock() {
     document.getElementById("date").textContent = currentDate;
 }
 updateClock();
-setInterval(updateClock, 1000);
+let firstInterval = setInterval(updateClock, 1000);
+
+const twelve = document.getElementById("12");
+const twentyFour = document.getElementById("24");
+
+const runInterval = {
+    intervalID: null,
+    stopNormalID: null,
+    runTwelve: () => {
+        runInterval.intervalID = setInterval((twelveHour = true) => {
+            updateClock(twelveHour)
+        }, 1000);
+    },
+    runNormal: () => {
+        runInterval.stopNormalID = setInterval(updateClock, 1000);
+    },
+    stopInterval: () => {
+        clearInterval(runInterval.intervalID);
+        clearInterval(runInterval.stopNormalID);
+    },
+}
+
+
+twelve.onclick = function () {
+    clearInterval(firstInterval);
+    runInterval.stopInterval();
+    runInterval.runTwelve();
+
+}
+
+twentyFour.onclick = function () {
+    clearInterval(firstInterval);
+    runInterval.stopInterval();
+    runInterval.runNormal();
+}
+
+
+
+const toggle = document.getElementById("toggle");
+const toggleMenu = document.getElementById("toggle-menu")
+
+let togglebtn = false;
+// toggle.onclick = () => {
+
+//     if (togglebtn) {
+//         toggleMenu.style.display = "none";
+//         togglebtn = false;
+//         // toggle.style.backgroundColor = "";
+//     }
+//     else {
+//         toggleMenu.style.display = "block";
+//         togglebtn = true;
+//         // toggle.style.backgroundColor = "#222231";
+//     }
+
+// }
+
+toggle.onclick = () => {
+
+    if (togglebtn) {
+        toggleMenu.style.animation = "reverse-swipe 0.5s linear forwards";
+        togglebtn = false;
+
+    }
+    else {
+        toggleMenu.style.animation = "swipe 0.5s linear forwards";
+        togglebtn = true;
+
+    }
+
+}
 
