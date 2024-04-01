@@ -27,7 +27,7 @@ function updateClock(twelveHour) {
     document.getElementById("date").textContent = currentDate;
 }
 updateClock();
-let firstInterval = setInterval(updateClock, 1000);
+let firstInterval = setInterval(updateClock, 100);
 
 const twelve = document.getElementById("12");
 const twentyFour = document.getElementById("24");
@@ -38,10 +38,10 @@ const runInterval = {
     runTwelve: () => {
         runInterval.intervalID = setInterval((twelveHour = true) => {
             updateClock(twelveHour)
-        }, 1000);
+        }, 100);
     },
     runNormal: () => {
-        runInterval.stopNormalID = setInterval(updateClock, 1000);
+        runInterval.stopNormalID = setInterval(updateClock, 100);
     },
     stopInterval: () => {
         clearInterval(runInterval.intervalID);
